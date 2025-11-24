@@ -1,0 +1,8 @@
+langchain-groq
+youtube-transcript-api
+python-dotenv
+streamlit
+fastapi
+uvicorn
+pydantic
+requests
