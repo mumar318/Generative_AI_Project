@@ -1,0 +1,22 @@
+# Environment variables (keep API keys secret)
+.env
+
+# Streamlit secrets (keep API keys secret)
+.streamlit/secrets.toml
+
+# Vector database (auto-generated, no need to push)
+chroma_db/
+demo_chroma_db/
+streamlit_chroma_db/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

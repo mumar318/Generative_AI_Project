@@ -81,6 +81,8 @@ if 'retriever' not in st.session_state:
     st.session_state.retriever = None
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
+if 'input_text' not in st.session_state:
+    st.session_state.input_text = ""
 
 @st.cache_resource
 def load_chatbot():
@@ -190,7 +192,8 @@ def main():
         
         for i, question in enumerate(sample_questions):
             if st.button(f"📝 {question}", key=f"sample_{i}"):
-                st.session_state.user_input = question
+                st.session_state["input_value"] = question
+                st.rerun()
         
         st.markdown("---")
         if st.button("🗑️ Clear Chat History"):
@@ -233,34 +236,27 @@ def main():
     
     # Input area
     col1, col2 = st.columns([4, 1])
-    
+
     with col1:
         user_input = st.text_input(
             "آپ کا سوال (Your Question):",
             placeholder="سورہ فاتحہ کی تفسیر بتائیں...",
-            key="user_input"
+            value=st.session_state.get("input_value", ""),
+            key="user_input_box"
         )
-    
+
     with col2:
         ask_button = st.button("📤 Ask", type="primary")
-    
+
     # Process question
     if ask_button and user_input.strip():
         if st.session_state.chatbot_ready:
             with st.spinner("🤔 Thinking..."):
                 try:
-                    # Get answer
                     answer = st.session_state.rag_chain.invoke(user_input)
-                    
-                    # Add to chat history
                     st.session_state.chat_history.append((user_input, answer))
-                    
-                    # Clear input
-                    st.session_state.user_input = ""
-                    
-                    # Rerun to show new message
+                    st.session_state["input_value"] = ""
                     st.rerun()
-                    
                 except Exception as e:
                     st.error(f"❌ Error: {str(e)}")
         else:
