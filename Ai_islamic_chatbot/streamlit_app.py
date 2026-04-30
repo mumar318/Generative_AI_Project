@@ -89,12 +89,11 @@ def load_chatbot():
     """Load and initialize the chatbot"""
     try:
         # Load environment
-        load_dotenv()
-        groq_api_key = os.getenv('GROQ_API_KEY') or st.secrets.get("GROQ_API_KEY")
-        
-        if not groq_api_key:
-            st.error("❌ GROQ_API_KEY not found in .env file")
-            return None, None
+        try:
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+except:
+    load_dotenv()
+    groq_api_key = os.getenv('GROQ_API_KEY')
         
         # Load sample text
         with open('sample_tafseer.txt', 'r', encoding='utf-8') as f:
