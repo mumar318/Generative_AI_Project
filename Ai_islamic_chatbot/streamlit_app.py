@@ -94,8 +94,11 @@ def load_chatbot():
         except:
             load_dotenv()
             groq_api_key = os.getenv('GROQ_API_KEY')
-        # Load sample text
-        with open('sample_tafseer.txt', 'r', encoding='utf-8') as f:
+        # Load sample text - use absolute path relative to this script
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        tafseer_file = os.path.join(base_dir, 'sample_tafseer.txt')
+        
+        with open(tafseer_file, 'r', encoding='utf-8') as f:
             text = f.read()
         
         # Create chunks
@@ -115,10 +118,11 @@ def load_chatbot():
         )
         
         # Create vector store
+        chroma_dir = os.path.join(base_dir, 'streamlit_chroma_db')
         vectorstore = Chroma.from_documents(
             documents=chunks,
             embedding=embeddings,
-            persist_directory="./streamlit_chroma_db"
+            persist_directory=chroma_dir
         )
         
         # Setup LLM
