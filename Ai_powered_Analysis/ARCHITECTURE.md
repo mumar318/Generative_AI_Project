@@ -444,6 +444,7 @@ Documentation
 8. **Efficient**: Optimized for performance
 
 ---
+## Lve Demo [AI_Powered_Analysis]("https://generativeaiproject-rvgjvc2wtrekftdiutheyr.streamlit.app/")
 
 ## 📊 Technology Stack Summary
 
@@ -481,3 +482,4 @@ Configuration
 ---
 
 This architecture provides a solid foundation for AI-powered data analysis with room for future enhancements and scalability.
+
