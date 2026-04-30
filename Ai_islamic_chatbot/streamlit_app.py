@@ -90,11 +90,10 @@ def load_chatbot():
     try:
         # Load environment
         try:
-    groq_api_key = st.secrets["GROQ_API_KEY"]
-except:
-    load_dotenv()
-    groq_api_key = os.getenv('GROQ_API_KEY')
-        
+            groq_api_key = st.secrets["GROQ_API_KEY"]
+        except:
+            load_dotenv()
+            groq_api_key = os.getenv('GROQ_API_KEY')
         # Load sample text
         with open('sample_tafseer.txt', 'r', encoding='utf-8') as f:
             text = f.read()
