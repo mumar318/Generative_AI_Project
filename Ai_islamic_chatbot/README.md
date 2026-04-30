@@ -27,7 +27,7 @@ A RAG-based Islamic chatbot that answers questions about Quranic verses, transla
 ## 🚀 Quick Start
 
 ### Option 1: Try Online (Recommended)
-Visit the live demo: **[AI Islamic Chatbot](https://ai-islamic-chatbot.streamlit.app/)**
+Visit the live demo: **[AI Islamic Chatbot](https://aiislamicchatbot-xqizcr9scxu4rspbk4ru8q.streamlit.app)**
 
 ### Option 2: Run Locally
 
